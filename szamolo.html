@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Számológép</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f2f2f2;
+      }
+      h1 {
+        font-size: 36px;
+        margin: 20px;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+      }
+      table {
+        border-collapse: collapse;
+        margin: 0 auto;
+        box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+      }
+      td {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid #999;
+        background-color: #fff;
+        cursor: pointer;
+      }
+      td:hover {
+        background-color: #ccc;
+      }
+      td:active {
+        background-color: #999;
+      }
+      td.colspan2 {
+        width: 105px;
+      }
+      td.colspan3 {
+        width: 160px;
+      }
+      td.colspan4 {
+        width: 215px;
+      }
+      td.result {
+        font-size: 36px;
+        font-weight: bold;
+        text-align: right;
+        padding: 10px;
+        width: 215px;
+        margin-bottom: 10px;
+        border: 1px solid #999;
+        background-color: #f2f2f2;
+        box-shadow: none;
+        cursor: default;
+      }
+    </style>
+  
+    <h1>Számológép</h1>
+    <table>
+      <tr>
+        <td class="colspan3 result" colspan="3"><div id="result">0</div></td>
+        <td class="operator" onclick="setOperator('/')">÷</td>
+      </tr>
+      <tr>
+        <td onclick="appendToDisplay(7)">7</td>
+        <td onclick="appendToDisplay(8)">8</td>
+        <td onclick="appendToDisplay(9)">9</td>
+        <td class="operator" onclick="setOperator('*')">x</td>
+      </tr>
+      <tr>
+        <td onclick="appendToDisplay(4)">4</td>
+        <td onclick="appendToDisplay(5)">5</td>
+        <td onclick="appendToDisplay(6)">6</td>
+        <td class="operator" onclick="setOperator('-')">-</td>
+      </tr>
+      <tr>
+        <td onclick="appendToDisplay(1)">1</td>
+        <td onclick="appendToDisplay(2)">2</td>
+        <td onclick="appendToDisplay(3)">3</td>
+        <td class="operator" onclick="setOperator('+')">+</td>
+      </tr>
+      <tr>
+        <td colspan="2" onclick="appendToDisplay(0)">0</td>
+        <td onclick="appendToDisplay('.')">.</td>
+        <td class="operator" onclick="calculate()">=</td>
+      </tr>
+      <script>
+        // Változók és függvények definiálása
+        let display = document.getElementById("result");
+        let operator = null;
+        let operand1 = null;
+        let operand2 = null;
+        let shouldClearDisplay = false;
+      
+        function appendToDisplay(value) {
+          if (shouldClearDisplay) {
+            display.innerHTML = "";
+            shouldClearDisplay = false;
+          }
+          display.innerHTML += value.toString();
+        }
+      
+        function setOperator(op) {
+          operator = op;
+          operand1 = parseFloat(display.innerHTML);
+          shouldClearDisplay = true;
+        }
+      
+        function calculate() {
+          operand2 = parseFloat(display.innerHTML);
+          let result = 0;
+          switch (operator) {
+            case "+":
+              result = operand1 + operand2;
+              break;
+            case "-":
+              result = operand1 - operand2;
+              break;
+            case "*":
+              result = operand1 * operand2;
+              break;
+            case "/":
+              result = operand1 / operand2;
+              break;
+          }
+          display.innerHTML = result.toString();
+          operand1 = result;
+          shouldClearDisplay = true;
+        }
+      
+        function clearDisplay() {
+          display.innerHTML = "0";
+          operator = null;
+          operand1 = null;
+          operand2 = null;
+          shouldClearDisplay = false;
+        }
+      
+        function clearEntry() {
+          display.innerHTML = "0";
+          shouldClearDisplay = false;
+        }
+      
+        function backspace() {
+          let currentValue = display.innerHTML;
+          if (currentValue.length == 1 || (currentValue.length == 2 && currentValue.includes("-"))) {
+            display.innerHTML = "0";
+          } else {
+            display.innerHTML = currentValue.substring(0, currentValue.length - 1);
+          }
+        }
+      
+        function toggleSign() {
+          let currentValue = parseFloat(display.innerHTML);
+          display.innerHTML = (-1 * currentValue).toString();
+        }
+      </script>
+    </table>
+  </head>
+</html>

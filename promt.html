@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bevitel példa</title>
+</head>
+<body>
+    <h2>Bevitel példa</h2>
+    <button onclick="showPrompt()">Adat bevitele prompt segítségével</button>
+
+
+    <script>
+
+        function showPrompt() {
+    var name = prompt('Kérem, adja meg a nevét:');
+    var age = prompt('Kérem, adja meg az életkorát:');
+
+    if (name && age) {
+        // Adatok megjelenítése
+        alert('Név: ' + name + '\nÉletkor: ' + age);
+    } else {
+        alert('Hiba: Kérjük, töltse ki mindkét mezőt!');
+    }
+}
+
+    </script>
+</body>
+</html>

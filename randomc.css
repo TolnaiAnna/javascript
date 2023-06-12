@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #d8caf7;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #a1f0f3;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  
+  .inputs {
+    margin-bottom: 10px;
+  }
+  
+  .input-group {
+    display: inline-block;
+    margin: 10px;
+  }
+  
+  
+  input[type="number"] {
+    padding: 5px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  
+  

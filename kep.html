@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kutya vagy cica?</title>
+	<style>
+		img {
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+	<h1>Kutya vagy cica?</h1>
+	<label for="allat">Válassz egy állatot:</label>
+	<select id="allat" onchange="changeImage()">
+		<option value="">-- Válassz --</option>
+		<option value="kutya">Kutya</option>
+		<option value="cica">Cica</option>
+	</select>
+	<br><br>
+	<img id="kep" src="">
+	<script>
+		function changeImage() {
+			var allat = document.getElementById("allat").value;
+			var kep = document.getElementById("kep");
+			if (allat == "kutya") {
+				kep.src = "https://via.placeholder.com/500x500?text=Kutya";
+				kep.alt = "Kutya";
+			} else if (allat == "cica") {
+				kep.src = "https://via.placeholder.com/500x500?text=Cica";
+				kep.alt = "Cica";
+			} else {
+				kep.src = "";
+				kep.alt = "";
+			}
+		}
+	</script>
+</body>
+</html>

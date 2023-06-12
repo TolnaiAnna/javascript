@@ -1,0 +1,61 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ccec55;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+
+.gombok {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.gombok label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.gombok input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.feladatok {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-left: 2px solid #ccc;
+    padding-left: 20px;
+}
+
+
+.feladatok h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.iframe {
+    width: 100%;
+    height: 400px;
+}
